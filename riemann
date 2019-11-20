@@ -1,0 +1,33 @@
+def riemann():
+    equation=input("Please enter the equation of your function\n")
+    lower=input("Enter lower boundary of sum\n")
+    upper=input("Enter upper boundary of sum\n")
+    width = int(upper)-int(lower)
+    intervals = input("Please enter how many intervals you would like in your sum\n")
+    interval_width = width/(int(intervals))
+    end = input("Please enter whether you would like left end, right end, or midpoint\n")
+    i=0
+    total=0
+    if "left" in end.lower():
+            while i <= int(intervals)-1:
+                x = int(lower) + (interval_width*i)
+                output = eval(equation)
+                total = total + output
+                i=i+1
+    elif "right" in end.lower():  
+            while i <= int(intervals):
+                x = int(lower) + (interval_width*i)
+                output = eval(equation)
+                total = total + output
+                i=i+1
+    elif "mid" in end.lower():  
+            while i <= int(intervals)-1:
+                x = int(lower)+((interval_width/2) + (interval_width*i))
+                output = eval(equation)
+                total = total + output
+                i=i+1
+    else:
+         print(end,"is not an available option, please try again.\n")
+    print("Riemann sum from",end,"for",equation,"from",lower,"to",upper,"with", intervals,"intervals is",total*interval_width)
+    input()
+
